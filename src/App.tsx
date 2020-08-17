@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import "./App.scss"
+import Game from "./Game"
+
+type State = "starting" | "playing" | "winning"
 
 function App() {
+  const [state, setState] = useState<State>("starting")
+  const [startTime, setStartTime] = useState(0)
+  const [endtime, setEndTime] = useState(0)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {state === "playing" ? (
+        <Game
+          onWin={() => {
+            setState("winning")
+            setEndTime(Date.now())
+          }}
+        />
+      ) : state === "starting" ? (
+        <button
+          id="play-game"
+          onClick={() => {
+            setState("playing")
+            setStartTime(Date.now())
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Play game!
+        </button>
+      ) : (
+        <div id="win">
+          You won!
+          <br />
+          Time: {Math.round((endtime - startTime) / 1000)} seconds
+        </div>
+      )}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
