@@ -1,33 +1,40 @@
 import React, { useState } from "react"
 import "./App.scss"
 import Game from "./Game"
+import { Level, levels } from "./levels"
 
-type State = "starting" | "playing" | "winning"
+type State =
+  | { state: "starting" }
+  | { state: "playing"; level: Level }
+  | { state: "winning" }
 
 function App() {
-  const [state, setState] = useState<State>("starting")
+  const [state, setState] = useState<State>({ state: "starting" })
   const [startTime, setStartTime] = useState(0)
   const [endtime, setEndTime] = useState(0)
 
   return (
     <div className="App">
-      {state === "playing" ? (
+      {state.state === "playing" ? (
         <Game
+          level={state.level}
           onWin={() => {
-            setState("winning")
+            setState({ state: "winning" })
             setEndTime(Date.now())
           }}
         />
-      ) : state === "starting" ? (
-        <button
-          id="play-game"
-          onClick={() => {
-            setState("playing")
-            setStartTime(Date.now())
-          }}
-        >
-          Play game!
-        </button>
+      ) : state.state === "starting" ? (
+        levels.map((level, i) => (
+          <button
+            className="play-game"
+            onClick={() => {
+              setState({ state: "playing", level })
+              setStartTime(Date.now())
+            }}
+          >
+            Level {i + 1}
+          </button>
+        ))
       ) : (
         <div id="win">
           You won!

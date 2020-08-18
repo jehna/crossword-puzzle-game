@@ -3,16 +3,17 @@ body {
   color: #FFF;
 }
 
-#play-game {
+.play-game {
   all: unset;
   border-radius: 0.3em;
   background: #0f4c75;
   padding: 0.3em 0.6em 0.5em;
   font-size: 2em;
-  margin: 0 auto;
   display: block;
-  margin-top: calc(50vh - 1em);
+  margin: 0.3em auto;
   cursor: pointer;
+  width: 6em;
+  text-align: center;
 
   &:active {
     transform: translateY(0.1em);

@@ -1,32 +1,25 @@
 import React, { useState, useEffect } from "react"
+import { Level } from "./levels"
 import "./Game.scss"
 
-type Board = {
-  charIndices: number[]
-  width: number
-  height: number
-  hash: string
-  solved: { [char: number]: string }
-}
-
-export default ({ onWin }: { onWin: () => void }) => {
+export default ({ onWin, level }: { onWin: () => void; level: Level }) => {
   const [board, setBoard] = useState(
-    boardData.charIndices.map((index) => ({
+    level.charIndices.map((index) => ({
       index,
-      char: boardData.solved[index] ?? ""
+      char: level.solved[index] ?? ""
     }))
   )
 
   useEffect(() => {
     digestMessage(board.map((i) => i.char).join("")).then((hash) => {
-      if (hash === boardData.hash) onWin()
+      if (hash === level.hash) onWin()
     })
-  }, [board, onWin])
+  }, [board, level.hash, onWin])
 
   return (
     <div
       id="game"
-      style={{ gridTemplateColumns: `repeat(${boardData.width}, 1fr)` }}
+      style={{ gridTemplateColumns: `repeat(${level.width}, 1fr)` }}
     >
       {board.map((i, n) => (
         <div className="board-cell" data-index={i.index} key={n}>
@@ -34,7 +27,7 @@ export default ({ onWin }: { onWin: () => void }) => {
             type="text"
             maxLength={1}
             value={i.char}
-            disabled={boardData.solved[i.index] !== undefined}
+            disabled={level.solved[i.index] !== undefined}
             onChange={(e) => {
               setBoard(
                 board.map((item) =>
@@ -50,41 +43,6 @@ export default ({ onWin }: { onWin: () => void }) => {
       ))}
     </div>
   )
-}
-
-const boardData: Board = {
-  solved: { 3: "v", 7: "n" },
-
-  charIndices: [
-    3,
-    0,
-    4,
-    3,
-    0,
-    0,
-    3,
-    0,
-    0,
-    7,
-    8,
-    0,
-    7,
-    10,
-    6,
-    0,
-    5,
-    1,
-    2,
-    0,
-    0,
-    10,
-    7,
-    9,
-    0
-  ],
-  width: 5,
-  height: 5,
-  hash: "4cb29b833beb49fad96cfc41edb5d38076f0ec2d27b9331e9b6ea027c2184413"
 }
 
 async function digestMessage(message: string) {
