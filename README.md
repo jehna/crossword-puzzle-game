@@ -1,44 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Crossword puzzle game
 
-## Available Scripts
+This is a simple crossword puzzle game with a few pre-generated puzzles.
 
-In the project directory, you can run:
+## Play it now!
 
-### `yarn start`
+You can play the game for free at:
+https://jesse.games/crossword-puzzle-generator/game/
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Developing
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+This is a simple create-react-app project, so you can run it with:
 
-### `yarn test`
+```shell
+yarn
+yarn start
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This installs all needed dependencies and starts the app locally in watch mode.
 
-### `yarn build`
+### Building
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Again, this is a simple create-react-app project, so to build you just:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```shell
+yarn build
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This builds the project to `build/` directory.
 
-### `yarn eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This is a simple free time project that's tightly coupled with the generator at
+https://github.com/jehna/crossword-puzzle-generator
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This game offers:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 10+ unique puzzles with varying challenge
+- Krypto-format puzzles
+- Timer to compete with your friends (or enemies)
+- Uses hashes for checking if the player has won, making reversing hard(er)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contributing
 
-## Learn More
+This was just a side project, but if you feel like it, please do contribute!
+Open up a pull request and I'll promise to get back to you.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Licensing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The code in this project is licensed under MIT license.
