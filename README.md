@@ -1,6 +1,6 @@
 # Crossword puzzle game
 
-This is a simple crossword puzzle game with a few pre-generated puzzles.
+This is a simple Finnish crossword puzzle game with a few pre-generated puzzles.
 
 ## Play it now!
 

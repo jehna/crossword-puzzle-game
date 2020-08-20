@@ -32,7 +32,7 @@ function App() {
               setStartTime(Date.now())
             }}
           >
-            Level {i + 1}
+            Taso {i + 1}
           </button>
         ))
       ) : (
